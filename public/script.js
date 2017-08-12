@@ -21,7 +21,7 @@ function ready () {
         var formData = new FormData(form);
 
         postBlogposts(formActionUrl, formData);
-        
+
         $('nav a').on('click', setActiveLink);
     });
 }
@@ -64,6 +64,8 @@ function getBlogposts (url) {
 }
 
 function addBlogpostsToPage (data) {
+  var postContainer   = document.querySelector('.post-container');
+  postContainer.innerHTML = "";
     for (var blogpost in data) {
         if (data.hasOwnProperty(blogpost)) {
 
@@ -72,7 +74,6 @@ function addBlogpostsToPage (data) {
             var postMeta        = document.createElement('div');
             var postDate        = document.createElement('span');
             var thumbnail       = document.createElement('img');
-            var postContainer   = document.querySelector('.post-container');
 
             thumbnail.src = "./img/default-image.jpg";
             thumbnail.className = "thumbnail";
